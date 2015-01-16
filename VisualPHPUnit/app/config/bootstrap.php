@@ -2,7 +2,11 @@
 
 $root = dirname(dirname(__DIR__));
 
-$xapp_root = realpath($root . DIRECTORY_SEPARATOR .'..' . DIRECTORY_SEPARATOR . '..');
+$xapp_root = realpath($root . DIRECTORY_SEPARATOR .'..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'xapp');
+
+$unit_root = realpath($root . DIRECTORY_SEPARATOR .'..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '');
+
+//echo($xapp_root);
 
 $config = array(
     /* Required */
@@ -13,7 +17,7 @@ $config = array(
     // The directories where the tests reside
     /*"{$root}/app/test",*/
     'test_directories' => array(
-        "{$xapp_root}/test/units"
+        "{$unit_root}/tests/units/"
     ),
 
 
@@ -78,7 +82,7 @@ $config = array(
 
 set_include_path(
     get_include_path()
-    . PATH_SEPARATOR . $xapp_root . DIRECTORY_SEPARATOR . 'testing'
+    . PATH_SEPARATOR . realpath($root.'/..')
     . PATH_SEPARATOR . $root
     . PATH_SEPARATOR . $config['pear_path']
 );
